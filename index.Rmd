@@ -1,0 +1,15 @@
+---
+title: "Course materials for JSM 2018"
+author: "Rafael Irizarry and Stephanie Hicks"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output: 
+    html_document:
+        toc: true
+        toc_float: true
+        highlight: tango
+        number_sections: true
+---
+
+# Outline 
+
+* [Course Logistics](course_logistics/course_logistics.html)
