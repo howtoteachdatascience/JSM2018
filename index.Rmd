@@ -5,7 +5,7 @@ date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output: html_document
 ---
 
-Welcome to Data Science for Statisticians at JSM 2018! 
+Welcome to Data Science for Statisticians at JSM 2018! [Please fill out this poll](https://docs.google.com/forms/d/e/1FAIpQLSeeSTMKCfBeXRe8p_2TYq5RrdEE80j4coI2vrEt2EDKQcd7iA/viewform?usp=sf_link)
 
 ## Course outline
 
