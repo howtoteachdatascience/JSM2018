@@ -12,7 +12,7 @@ Welcome to Data Science for Statisticians at JSM 2018!
 * [What do we mean by data science? What are our guiding principles when teaching data science?](https://docs.google.com/presentation/d/1chQXLcLdPEXx-iC58fh1XHCAmLN5Q6rOt8eZvMvcbOo/edit?usp=sharing)
 * Getting set up
   * [Installing R, RStudio and Git](productivity/installing-software.html)
-  * [Working in RStudio](productivity/RStudio.html)
+  * [Working in RStudio](productivity/rstudio.html)
   * [Working in Unix](productivity/unix.html)
   * [Advanced Unix](productivity/advanced-unix.html)
   * [Introduction to Git](productivity/git.html)
