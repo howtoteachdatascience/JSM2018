@@ -255,7 +255,7 @@ div.tocify {
 
 <div id="basic-data-wrangling" class="section level1">
 <h1><span class="header-section-number">1</span> Basic data wrangling</h1>
-<p>We find that students often strugle with R, is its inconsistency in syntax and output of functions. As an example consider that if we define</p>
+<p>We find that students often struggle with R, is its inconsistency in syntax and output of functions. As an example consider that if we define</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">b =</span> <span class="dv">7</span><span class="op">:</span><span class="dv">12</span>)</code></pre></div>
 <p>subsetting can produce a data.frame or a vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</code></pre></div>
@@ -269,18 +269,18 @@ div.tocify {
 <pre><code>## [1] 1 2 3 4 5 6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[[<span class="dv">1</span>]]</code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6</code></pre>
-<p>and differnt types of parenthesis</p>
+<p>and different types of parenthesis</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x[<span class="dv">1</span>])</code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(x[[<span class="dv">1</span>]])</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Our experience is that introducing data science with the tidyverse provides a easier entry point for students. The tidyverse imposes some strong restrictions, for exampl, it is meant to work with data frames exclusively, it permits the analysis of a suprprinsingly broad set of problems. Here we introduce some basics.</p>
+<p>Our experience is that introducing data science with the tidyverse provides a easier entry point for students. The tidyverse imposes some strong restrictions, for example, it is meant to work with data frames exclusively, it permits the analysis of a surprisingly broad set of problems. Here we introduce some basics.</p>
 <p>We will start by introducing the <code>dplyr</code> package which provides intuitive functionality for working with tables. We later use <code>dplyr</code> to perform some more advanced data wrangling operations.</p>
 <p>Once you install <code>dplyr</code> you can load it using:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
 <p>This package introduces functions that perform the most common operations in data wrangling and uses names for these functions that are relatively easy to remember. For instance, to change the data table by adding a new column, we use <code>mutate</code>. To filter the data table to a subset of rows, we use <code>filter</code>. Finally, to subset the data by selecting specific columns, we use <code>select</code>. We can also perform a series of operations, for example select and then filter, by sending the results of one function to another using what is called the <em>pipe operator</em>: <code>%&gt;%</code>.<br />
 ## Case study</p>
-<p>To illustrate how this work we introduce the US gun muders dataset, included in the dslabs package:</p>
+<p>To illustrate how this work we introduce the US gun murders dataset, included in the dslabs package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dslabs)
 <span class="kw">data</span>(<span class="st">&quot;murders&quot;</span>)</code></pre></div>
 <p>It includes US gun murders by state for 2010</p>
@@ -292,13 +292,13 @@ div.tocify {
 ## 4   Arkansas  AR  South    2915918    93
 ## 5 California  CA   West   37253956  1257
 ## 6   Colorado  CO   West    5029196    65</code></pre>
-<p>Our taks will be to convince a European colleague with a job offer from the US, worried about the high US murder rate, that there is actually quite a bit of variability. We will compute state-level murder rate and then filter states by different qualities.</p>
+<p>Our task will be to convince a European colleague with a job offer from the US, worried about the high US murder rate, that there is actually quite a bit of variability. We will compute state-level murder rate and then filter states by different qualities.</p>
 <div id="adding-a-column-with-mutate" class="section level2">
 <h2><span class="header-section-number">1.1</span> Adding a column with <code>mutate</code></h2>
 <p>We want all the necessary information for our analysis to be included in the data table. So the first task is to add the murder rates to our data frame.</p>
-<p>Using regular R sytax we could write this:</p>
+<p>Using regular R syntax we could write this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">murders<span class="op">$</span>rate =<span class="st"> </span>murders<span class="op">$</span>total <span class="op">/</span><span class="st"> </span>murders<span class="op">$</span>population <span class="op">*</span><span class="st"> </span><span class="dv">100000</span></code></pre></div>
-<p>The function mutate provides a slighty more readeable way of doingthis. It takes the data frame as a first argument and the name and values of the variable in the second using the convention <code>name = values</code>. So to add murder rates we use:</p>
+<p>The function mutate provides a slightly more readable way of doing this. It takes the data frame as a first argument and the name and values of the variable in the second using the convention <code>name = values</code>. So to add murder rates we use:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">murders &lt;-<span class="st"> </span><span class="kw">mutate</span>(murders, <span class="dt">rate =</span> total <span class="op">/</span><span class="st"> </span>population <span class="op">*</span><span class="st"> </span><span class="dv">100000</span>)</code></pre></div>
 <p>Notice that here we used unquoted <code>total</code> and <code>population</code> inside the function, which are objects that are <strong>not</strong> defined in our workspace. So why do we not get an error?</p>
 <p>This is one of the main features of dplyr. Function in this package, such <code>mutate</code>, know to look for variables in the data frame provided in the first argument. So in the call to mutate above, <code>total</code> will have the values in <code>murders$total</code>. This approach makes the code much more readable.</p>
@@ -316,7 +316,7 @@ div.tocify {
 <div id="subsetting-with-filter" class="section level2">
 <h2><span class="header-section-number">1.2</span> Subsetting with <code>filter</code></h2>
 <p>Now suppose that we want to filter the data table to only show the entries for which the murder rate is lower than 0.71. To do this, we use the <code>filter</code> function which takes the data table as an argument and then the conditional statement as the next. Like mutate, we can use the unquoted variable names from <code>murders</code> inside the function and it will know we mean the columns and not objects in the workspace.</p>
-<p>This is what this opreation looks like in R-base:</p>
+<p>This is what this operation looks like in R-base:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">murders<span class="op">$</span>rate[murders<span class="op">$</span>rate <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.71</span>]</code></pre></div>
 <p>The tidyverse version is much more readable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(murders, rate <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.71</span>)</code></pre></div>
@@ -334,7 +334,7 @@ div.tocify {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">new_table &lt;-<span class="st"> </span>murders[, <span class="kw">c</span>(<span class="st">&quot;state&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;rate&quot;</span>)]
 new_table<span class="op">$</span>rate[new_table<span class="op">$</span>rate <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.71</span>]</code></pre></div>
 <pre><code>## [1] 0.5145920 0.6893484 0.3798036 0.5947151 0.3196211</code></pre>
-<p>Here is a frist attempt at the tidyverse approach, alhough soon we see an improvment.</p>
+<p>Here is a first attempt at the tidyverse approach, although soon we see an improvement.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">new_table &lt;-<span class="st"> </span><span class="kw">select</span>(murders, state, region, rate)
 <span class="kw">filter</span>(new_table, rate <span class="op">&lt;=</span><span class="st"> </span><span class="fl">0.71</span>)</code></pre></div>
 <pre><code>##           state        region      rate
@@ -370,7 +370,7 @@ new_table<span class="op">$</span>rate[new_table<span class="op">$</span>rate <s
 <p>The above statement is equivalent to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log2</span>(<span class="kw">sqrt</span>(<span class="dv">16</span>))</code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<p>We find that most students find the former sytnax more readable</p>
+<p>We find that most students find the former syntax more readable</p>
 <p>Remember that the pipe sends values to the first argument so we can define arguments as if the first argument is already defined:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">16</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sqrt</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">log</span>(<span class="dt">base =</span> <span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 2</code></pre>
@@ -544,7 +544,7 @@ s</code></pre></div>
 <p>We can obtain these three values with just one line using the <code>quantiles</code> function; e.g. <code>quantile(x, c(0,0.5,1))</code> returns the min, median, and max of the vector <code>x</code>. However, if we attempt to use a function that returns two or more values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">murders <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarize</span>(<span class="dt">range =</span> <span class="kw">quantile</span>(height, <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)))</code></pre></div>
-<p>we will receive an error: <code>Error: expecting result of length one, got : 2</code>. With the function <code>summarize</code>, we can only call functions that return a single value. To perform this type of operation we need more advanced tidyverse tool whihc we may learn later.</p>
+<p>we will receive an error: <code>Error: expecting result of length one, got : 2</code>. With the function <code>summarize</code>, we can only call functions that return a single value. To perform this type of operation we need more advanced tidyverse tool which we may learn later.</p>
 <p>For another example of how we can use the <code>summarize</code> function, let’s compute the average murder rate for the United States. Remember our data table includes total murders and population size for each state and we have already used dplyr to add a murder rate column</p>
 <p>Remember that the US murder is <strong>not</strong> the average of the state murder rates:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">murders <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">mean</span>(rate))</code></pre></div>

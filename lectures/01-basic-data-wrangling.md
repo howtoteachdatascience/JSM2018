@@ -6,7 +6,7 @@ July 30, 2018
 Basic data wrangling
 ====================
 
-We find that students often strugle with R, is its inconsistency in syntax and output of functions. As an example consider that if we define
+We find that students often struggle with R, is its inconsistency in syntax and output of functions. As an example consider that if we define
 
 ``` r
 x <- data.frame(a = 1:6, b = 7:12)
@@ -46,7 +46,7 @@ x[[1]]
 
     ## [1] 1 2 3 4 5 6
 
-and differnt types of parenthesis
+and different types of parenthesis
 
 ``` r
 class(x[1])
@@ -60,7 +60,7 @@ class(x[[1]])
 
     ## [1] "integer"
 
-Our experience is that introducing data science with the tidyverse provides a easier entry point for students. The tidyverse imposes some strong restrictions, for exampl, it is meant to work with data frames exclusively, it permits the analysis of a suprprinsingly broad set of problems. Here we introduce some basics.
+Our experience is that introducing data science with the tidyverse provides a easier entry point for students. The tidyverse imposes some strong restrictions, for example, it is meant to work with data frames exclusively, it permits the analysis of a surprisingly broad set of problems. Here we introduce some basics.
 
 We will start by introducing the `dplyr` package which provides intuitive functionality for working with tables. We later use `dplyr` to perform some more advanced data wrangling operations.
 
@@ -70,21 +70,10 @@ Once you install `dplyr` you can load it using:
 library(dplyr)
 ```
 
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
 This package introduces functions that perform the most common operations in data wrangling and uses names for these functions that are relatively easy to remember. For instance, to change the data table by adding a new column, we use `mutate`. To filter the data table to a subset of rows, we use `filter`. Finally, to subset the data by selecting specific columns, we use `select`. We can also perform a series of operations, for example select and then filter, by sending the results of one function to another using what is called the *pipe operator*: `%>%`.
 \#\# Case study
 
-To illustrate how this work we introduce the US gun muders dataset, included in the dslabs package:
+To illustrate how this work we introduce the US gun murders dataset, included in the dslabs package:
 
 ``` r
 library(dslabs)
@@ -105,20 +94,20 @@ head(murders)
     ## 5 California  CA   West   37253956  1257
     ## 6   Colorado  CO   West    5029196    65
 
-Our taks will be to convince a European colleague with a job offer from the US, worried about the high US murder rate, that there is actually quite a bit of variability. We will compute state-level murder rate and then filter states by different qualities.
+Our task will be to convince a European colleague with a job offer from the US, worried about the high US murder rate, that there is actually quite a bit of variability. We will compute state-level murder rate and then filter states by different qualities.
 
 Adding a column with `mutate`
 -----------------------------
 
 We want all the necessary information for our analysis to be included in the data table. So the first task is to add the murder rates to our data frame.
 
-Using regular R sytax we could write this:
+Using regular R syntax we could write this:
 
 ``` r
 murders$rate = murders$total / murders$population * 100000
 ```
 
-The function mutate provides a slighty more readeable way of doingthis. It takes the data frame as a first argument and the name and values of the variable in the second using the convention `name = values`. So to add murder rates we use:
+The function mutate provides a slightly more readable way of doing this. It takes the data frame as a first argument and the name and values of the variable in the second using the convention `name = values`. So to add murder rates we use:
 
 ``` r
 murders <- mutate(murders, rate = total / population * 100000)
@@ -149,7 +138,7 @@ Subsetting with `filter`
 
 Now suppose that we want to filter the data table to only show the entries for which the murder rate is lower than 0.71. To do this, we use the `filter` function which takes the data table as an argument and then the conditional statement as the next. Like mutate, we can use the unquoted variable names from `murders` inside the function and it will know we mean the columns and not objects in the workspace.
 
-This is what this opreation looks like in R-base:
+This is what this operation looks like in R-base:
 
 ``` r
 murders$rate[murders$rate <= 0.71]
@@ -182,7 +171,7 @@ new_table$rate[new_table$rate <= 0.71]
 
     ## [1] 0.5145920 0.6893484 0.3798036 0.5947151 0.3196211
 
-Here is a frist attempt at the tidyverse approach, alhough soon we see an improvment.
+Here is a first attempt at the tidyverse approach, although soon we see an improvement.
 
 ``` r
 new_table <- select(murders, state, region, rate)
@@ -246,7 +235,7 @@ log2(sqrt(16))
 
     ## [1] 2
 
-We find that most students find the former sytnax more readable
+We find that most students find the former syntax more readable
 
 Remember that the pipe sends values to the first argument so we can define arguments as if the first argument is already defined:
 
@@ -470,7 +459,8 @@ The `summarize` function in dplyr provides a way to compute summary statistics w
 The function `summarize` permits us to compute as many summaries of the data as we want. For example, if we wanted to compute the average and standard deviation for the murder rate we simply do as follows:
 
 ``` r
-s <- murders %>% summarize(average = mean(rate), standard_deviation = sd(rate))
+s <- murders %>% 
+  summarize(average = mean(rate), standard_deviation = sd(rate))
 s
 ```
 
@@ -524,7 +514,7 @@ murders %>%
   summarize(range = quantile(height, c(0, 0.5, 1)))
 ```
 
-we will receive an error: `Error: expecting result of length one, got : 2`. With the function `summarize`, we can only call functions that return a single value. To perform this type of operation we need more advanced tidyverse tool whihc we may learn later.
+we will receive an error: `Error: expecting result of length one, got : 2`. With the function `summarize`, we can only call functions that return a single value. To perform this type of operation we need more advanced tidyverse tool which we may learn later.
 
 For another example of how we can use the `summarize` function, let's compute the average murder rate for the United States. Remember our data table includes total murders and population size for each state and we have already used dplyr to add a murder rate column
 
