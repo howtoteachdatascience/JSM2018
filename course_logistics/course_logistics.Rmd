@@ -80,29 +80,11 @@ To learn more about R, follow these tutorials:
 We will put all this together using the powerful integrated desktop environment 
 [RStudio](https://www.rstudio.com/). RStudio will be our launching pad for data science projects. It not only provides an editor for us to create and edit our scripts but many other useful tools. In this section, we go over some of the basics.
 
-#### Installing RStudio
-
-Instructions on how to install RStudio are
-[here](http://www.rstudio.com/products/rstudio/download/) and, for
-Windows, we have special
-instructions [here](https://github.com/genomicsclass/windows).
-
-Once you install RStudio you can simply start RStudio rather than R since that program automatically starts R. But don't be confused. R is a different piece of software and you can't run RStudio without first installing R.
-
-To learn more about RStudio, follow this tutorial: 
-
-* [RStudio](https://rafalab.github.io/dsbook/getting-started.html#installing-rstudio)
-
 In terms of course logistics, we recommend spending one lecture at the beginning of the course introducing the programming language R and tools, R Markdown and RStudio. 
 
 ## Why we use unix?
 
 A typical data analysis challenge may involve several parts, each involving several data files, including files containing the scripts we use to analyze data. Keeping all this organized can be challenging. One approach to overcome this challenge is to use the _Unix shell_ as a tool for managing files and directories on your computer system. Using Unix will permit you to use the keyboard rather than the mouse when creating folders, moving from directory to directory, and renaming, deleting or moving files. 
-
-To learn more about unix tools and RStudio, follow these tutorials: 
-
-* [Unix]()
-* [Advanced Unix]()
 
 
 ## Why we use Git and GitHub?
@@ -118,11 +100,6 @@ There are three main reasons to use Git and GitHub.
 2. Collaborating: Once you set up a central repo, you can have multiple people make changes to code and keep versions synched. GitHub provides a free service for centralized repos. GitHub also has a special utility, called a _pull request_, that can be used by anybody to suggest changes to your code. You can easily either accept or deny the request.
 
 3. Version control: The version control capabilities of Git permit us to keep track of changes we make to our code. We can also revert back to previous versions of files. Git also permits us to create _branches_ in which we can test out ideas, then decide if we _merge_ the new branch with the original.
-
-Next, let's look at these two tutorials:
-
-* [What is git?]()
-* [What is GitHub?]()
 
 In terms of course logistics, we recommend spending one lecture at the beginning of the course introducing the concept of version control, git and GitHub. In our course, to demonstrate the mechanics, we created a test repository (https://github.com/datasciencelabs/test_repo) and asked all the students to use git to obtain a copy of this repository during the lecture. We also introduced the concept of making changes to local repositories and pushing the changes to remote repositories. After this lecture, students were able to stay in sync with the course repository to access the course material at the beginning of each lecture. 
 
@@ -197,9 +174,7 @@ knitr::include_graphics("img/website-09.png")
 
 There are several ways to set up a syllabus, but one way that allows for a bit more flexiblity is to create a spreadsheet on Google Drive and embed the spreadsheet in an R Markdown on the course website. 
 
-
-## Set up Slack for course communication
-
+Here is an example from our course in 2016: [http://datasciencelabs.github.io/2016/pages/lectures.html](http://datasciencelabs.github.io/2016/pages/lectures.html)
 
 
 
@@ -279,3 +254,5 @@ The deliverables for the project included
 The project proposal described the motivation for the project, the project objectives, a description of the data, how to obtain the data, an overview of the computational methods proposed to analyze the data and a timeline for completing the project. 
 
 TAs were paired together with 3-4 groups to meet to discuss the proposed projects and provide guidance. The students used the concepts learned in and outside of the course to complete the projects. Once the projects were complete, the submitted deliverables were reviewed and the best projects were highlighted at the end of the course.
+
+Some examples of final projects are listed at the bottom of this page: [http://datasciencelabs.github.io/2016/pages/projects.html](http://datasciencelabs.github.io/2016/pages/projects.html)
