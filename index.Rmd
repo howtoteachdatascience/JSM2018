@@ -1,15 +1,25 @@
 ---
-title: "Course materials for JSM 2018"
-author: "Rafael Irizarry and Stephanie Hicks"
+title: "Data Science for Statisticians"
+author: "Stephanie Hicks, Rafael Irizarry"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
-output: 
-    html_document:
-        toc: true
-        toc_float: true
-        highlight: tango
-        number_sections: true
+output: html_document
 ---
 
-# Outline 
+Welcome to Data Science for Statisticians at JSM 2018! 
 
-* [Course Logistics](course_logistics/course_logistics.html)
+## Course outline
+
+* [What do we mean by data science? What are our guiding principles when teaching data science?](https://docs.google.com/presentation/d/1chQXLcLdPEXx-iC58fh1XHCAmLN5Q6rOt8eZvMvcbOo/edit?usp=sharing)
+* [Wrangling with the tidyverse](lectures/01-basic-data-wrangling.html)
+* [Data visualization with ggplot2](lectures/02-intro-to-ggplot2.html)
+* Example lectures and case studies
+  * [Trends in world health and economics - Data visualization](lectures/03-gapminder.html)
+  * [Data visualization principles](lectures/04-dataviz-principles.html)
+  * [Election forecasting - Statistical Inference and Modeling](lectures/05-election-forecasting.html)
+  * [Advanced wrangling](lectures/06-wrangling.html)
+  * [Zip code reading - Machine Learning](lectures/07-machine-learning.html)
+  * [Smoothing](lectures/08-smoothing.html)
+  * [Advanced machine learning](lectures/09-machine-learning-2.html)
+* [Logistics for our course](course_logistics/course_logistics.html)
+* Practicum: create your own homework
+
